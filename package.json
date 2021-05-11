@@ -1,0 +1,16 @@
+{
+  "name": "electron-webpack-native-module-example",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/raviSussol/electron-webpack-native-module-example.git",
+  "author": "Ravi Shrestha <ravi.shrestha@sussol.net>",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^12.0.7",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0"
+  }
+}
