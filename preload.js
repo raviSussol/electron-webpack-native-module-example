@@ -10,3 +10,9 @@ window.addEventListener('DOMContentLoaded', () => {
     replaceText(`${type}-version`, process.versions[type])
   }
 })
+
+const { contextBridge, ipcRenderer } = require('electron');
+
+contextBridge.exposeInMainWorld('api', {
+  ngAdd: (x, y) => ipcRenderer.invoke('NATIVE_MODULE', x, y)
+});

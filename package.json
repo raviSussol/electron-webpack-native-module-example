@@ -3,14 +3,30 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "postinstall": "electron-builder install-app-deps",
+    "clean": "del-cli dist",
+    "compile:main": "webpack --env main --color",
+    "compile:preload": "webpack --env preload --color",
+    "compile:renderer": "webpack --color",
+    "compile": "yarn clean && npm-run-all -p compile:*",
+    "dev": "cross-env NODE_ENV=development electron dist/main",
+    "start": "yarn compile && yarn dev"
   },
   "repository": "https://github.com/raviSussol/electron-webpack-native-module-example.git",
   "author": "Ravi Shrestha <ravi.shrestha@sussol.net>",
   "license": "MIT",
   "devDependencies": {
+    "cross-env": "^7.0.3",
+    "del-cli": "^3.0.1",
     "electron": "^12.0.7",
+    "electron-builder": "^22.11.3",
+    "html-webpack-plugin": "^5.3.1",
+    "npm-run-all": "^4.1.5",
     "webpack": "^5.37.0",
     "webpack-cli": "^4.7.0"
+  },
+  "dependencies": {
+    "ffi-napi": "^4.0.3",
+    "ref-napi": "^3.0.2"
   }
 }
