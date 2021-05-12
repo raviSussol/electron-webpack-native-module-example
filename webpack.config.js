@@ -34,7 +34,7 @@ const config = env => {
     }),
     entry: preload ? { preload: resolve(__dirname, 'preload.js') }
       : { index: resolve(__dirname, 'main.js') },
-    node: { __dirname: true },
+    node: { __dirname: false },
     plugins: preload ? undefined : [
       new CopyWebpackPlugin({
         patterns: [{from: resolve(__dirname, 'lib'), to: resolve(base.output.path, 'lib')}]
