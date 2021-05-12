@@ -9,10 +9,10 @@ function createWindow () {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.resolve(__dirname, 'preload.js')
+      preload: path.resolve(app.getAppPath(), './preload.js')
     }
   })
-  console.log('preload: ', path.resolve(__dirname, 'preload.js'));
+
   // and load the index.html of the app.
   mainWindow.loadFile(path.resolve(app.getAppPath(), '../renderer/index.html'));
 

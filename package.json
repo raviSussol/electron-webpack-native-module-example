@@ -10,12 +10,14 @@
     "compile:renderer": "webpack --color",
     "compile": "yarn clean && npm-run-all -p compile:*",
     "dev": "cross-env NODE_ENV=development electron dist/main",
-    "start": "yarn compile && yarn dev"
+    "start": "yarn compile && yarn dev",
+    "build": "yarn compile && cross-env NODE_ENV=production electron-builder build"
   },
   "repository": "https://github.com/raviSussol/electron-webpack-native-module-example.git",
   "author": "Ravi Shrestha <ravi.shrestha@sussol.net>",
   "license": "MIT",
   "devDependencies": {
+    "copy-webpack-plugin": "^8.1.1",
     "cross-env": "^7.0.3",
     "del-cli": "^3.0.1",
     "electron": "^12.0.7",
@@ -28,5 +30,52 @@
   "dependencies": {
     "ffi-napi": "^4.0.3",
     "ref-napi": "^3.0.2"
+  },
+  "build": {
+    "productName": "EWNM",
+    "appId": "com.wenm.app",
+    "extraMetadata": {
+      "main": "dist/main"
+    },
+    "files": [
+      "dist/",
+      "node_modules/",
+      "dist/lib/libCal.dylib",
+      "dist/main/index.js",
+      "dist/renderer/index.html",
+      "dist/renderer/renderer.js",
+      "dist/main/preload.js",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "lib",
+      "output": "release"
+    },
+    "extraResources": [
+      "./lib/**"
+    ],
+    "copyright": "Copyright © 2021",
+    "mac": {
+      "category": "private.app-category.productivity",
+      "target": "dmg"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 152,
+          "y": 201
+        },
+        {
+          "x": 445,
+          "y": 201,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ],
+      "iconSize": 110,
+      "iconTextSize": 13
+    },
+    "compression": "normal",
+    "asar": true
   }
 }

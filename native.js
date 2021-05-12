@@ -1,8 +1,9 @@
 const ffi = require('ffi-napi');
 const ref = require('ref-napi');
 const path = require('path');
+const { app } = require('electron');
 
-const libCal = path.resolve(__dirname, './libCal');
+const libCal = path.resolve(app.getAppPath(), '../lib/libCal');
 
 const { int } = ref.types;
 
