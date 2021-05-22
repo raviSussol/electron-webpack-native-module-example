@@ -3,6 +3,7 @@
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
 
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
@@ -34,13 +35,27 @@ const config = env => {
     }),
     entry: preload ? { preload: resolve(__dirname, 'preload.js') }
       : { index: resolve(__dirname, 'main.js') },
-    node: { __dirname: false },
     plugins: preload ? undefined : [
       new CopyWebpackPlugin({
-        patterns: [{from: resolve(__dirname, 'lib'), to: resolve(base.output.path, 'lib')}]
+        patterns: [
+          {
+            from: resolve(__dirname, 'lib'),
+            to: resolve(base.output.path, 'lib')
+          }
+        ]
+      }),
+      new webpack.DefinePlugin({
+        '__dist': `"${distPath}"`
       })
     ]
   });
+  if (!preload) {
+    main.plugins.push(
+      new webpack.DefinePlugin({
+        '__goLib': `"${resolve(__dirname, 'lib').replace(/\\/g, '\\\\')}"`,
+      })
+    );
+  }
   const renderer = Object.assign({}, base, {
     target: 'electron-renderer',
     output: Object.assign({}, base.output, {

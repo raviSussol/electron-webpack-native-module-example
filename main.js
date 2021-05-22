@@ -1,7 +1,8 @@
+'use strict';
 // Modules to control application life and create native browser window
-const {app, BrowserWindow, ipcMain} = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
-const { ngAdd } = require('./native');
+const { ngAdd } = require('./nativeModule');
 
 function createWindow () {
   // Create the browser window.
@@ -9,12 +10,12 @@ function createWindow () {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.resolve(app.getAppPath(), './preload.js')
+      preload: path.resolve(__dist, 'main/preload.js')
     }
   })
-
+  // console.log('__dirname: ', __dirname);
   // and load the index.html of the app.
-  mainWindow.loadFile(path.resolve(app.getAppPath(), '../renderer/index.html'));
+  mainWindow.loadFile(path.resolve(__dist, 'renderer/index.html'));
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()

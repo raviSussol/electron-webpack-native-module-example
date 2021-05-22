@@ -1196,6 +1196,13 @@ ejs@^3.1.6:
   dependencies:
     jake "^10.6.1"
 
+electron-bindings@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/electron-bindings/-/electron-bindings-1.0.2.tgz#661321749bbe4e66dfc447ab17361f13d42b65db"
+  integrity sha512-jVTUsdMXCqTIaK83l6eSPPqnJeMMlcVEh+a68QvqNqihfd/HhaG7HEI8nPLLJfVymBQIgMnsvRKLzKTsGqNrFg==
+  optionalDependencies:
+    electron "^12.0.7"
+
 electron-builder@^22.11.3:
   version "22.11.3"
   resolved "https://registry.yarnpkg.com/electron-builder/-/electron-builder-22.11.3.tgz#35a193f3bdf78affd4d8b58e4d756b6dc55c922d"
@@ -1213,6 +1220,30 @@ electron-builder@^22.11.3:
     read-config-file "6.2.0"
     update-notifier "^5.1.0"
     yargs "^17.0.1"
+
+electron-node-ffi@^4.0.5:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/electron-node-ffi/-/electron-node-ffi-4.0.5.tgz#cf2c4e9aceb6c756e291e298ec3c64e25d0a6b02"
+  integrity sha512-NX6V+QrDOAArRWU3/vvpcfuHQcgfgD2amv0bFzlAEw1JLFarwjxoh13TXcCShgdyG0T0/mau2KxDsh7XkNWfdw==
+  dependencies:
+    debug "^4.1.1"
+    electron-bindings "^1.0.2"
+    electron-node-ref "^3.0.4"
+    get-uv-event-loop-napi-h "^1.0.5"
+    node-addon-api "^3.0.0"
+    node-gyp-build "^4.2.1"
+    ref-struct-di "^1.1.0"
+
+electron-node-ref@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/electron-node-ref/-/electron-node-ref-3.0.4.tgz#e7690a43dda49c909e7b4452d1a0daf01ddf9465"
+  integrity sha512-4BJ46zxNfDFCCZ8I1CahJtddBLTxMMbYFpOLXfM8/4QPHQMT5EsNr9Pd6dfYBs23UzMAO9uvMxRs2CeS3QpCTw==
+  dependencies:
+    debug "^4.1.1"
+    electron-bindings "^1.0.2"
+    get-symbol-from-current-process-h "^1.0.2"
+    node-addon-api "^2.0.0"
+    node-gyp-build "^4.2.1"
 
 electron-publish@22.11.2:
   version "22.11.2"
@@ -1459,18 +1490,6 @@ fd-slicer@~1.1.0:
   integrity sha1-JcfInLH5B3+IkbvmHY85Dq4lbx4=
   dependencies:
     pend "~1.2.0"
-
-ffi-napi@^4.0.3:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/ffi-napi/-/ffi-napi-4.0.3.tgz#27a8d42a8ea938457154895c59761fbf1a10f441"
-  integrity sha512-PMdLCIvDY9mS32RxZ0XGb95sonPRal8aqRhLbeEtWKZTe2A87qRFG9HjOhvG8EX2UmQw5XNRMIOT+1MYlWmdeg==
-  dependencies:
-    debug "^4.1.1"
-    get-uv-event-loop-napi-h "^1.0.5"
-    node-addon-api "^3.0.0"
-    node-gyp-build "^4.2.1"
-    ref-napi "^2.0.1 || ^3.0.2"
-    ref-struct-di "^1.1.0"
 
 filelist@^1.0.1:
   version "1.0.2"
@@ -2374,9 +2393,9 @@ node-addon-api@^2.0.0:
   integrity sha512-Ntyt4AIXyaLIuMHF6IOoTakB3K+RWxwtsHNRxllEoA6vPwP9o4866g6YWDLUdnucilZhmkxiHwHr11gAENw+QA==
 
 node-addon-api@^3.0.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-3.1.0.tgz#98b21931557466c6729e51cb77cd39c965f42239"
-  integrity sha512-flmrDNB06LIl5lywUz7YlNGZH/5p0M7W28k8hzd9Lshtdh1wshD2Y+U4h9LD6KObOy1f+fEVdgprPrEymjM5uw==
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-3.2.0.tgz#7028b56a7eb572b73873aed731a7f9c9365f5ee4"
+  integrity sha512-kcwSAWhPi4+QzAtsL2+2s/awvDo2GKLsvMCwNRxb5BUshteXU8U97NCyvQDsGKs/m0He9WcG4YWew/BnuLx++w==
 
 node-gyp-build@^4.2.1:
   version "4.2.3"
@@ -2784,16 +2803,6 @@ redent@^3.0.0:
   dependencies:
     indent-string "^4.0.0"
     strip-indent "^3.0.0"
-
-"ref-napi@^2.0.1 || ^3.0.2", ref-napi@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/ref-napi/-/ref-napi-3.0.2.tgz#fe71c2a09df654baa66649d783c6e5ab182c19cb"
-  integrity sha512-5YE0XrvWteoTr5DR2sEqxefL06aml7c6qS7hGv3u27do4HlGQphwvB+zD1NYep9utMKScvwOZsSs9EPYdGBVsg==
-  dependencies:
-    debug "^4.1.1"
-    get-symbol-from-current-process-h "^1.0.2"
-    node-addon-api "^2.0.0"
-    node-gyp-build "^4.2.1"
 
 ref-struct-di@^1.1.0:
   version "1.1.1"

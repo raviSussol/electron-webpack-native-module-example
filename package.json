@@ -28,8 +28,8 @@
     "webpack-cli": "^4.7.0"
   },
   "dependencies": {
-    "ffi-napi": "^4.0.3",
-    "ref-napi": "^3.0.2"
+    "electron-node-ffi": "^4.0.5",
+    "electron-node-ref": "^3.0.4"
   },
   "build": {
     "productName": "EWNM",
@@ -38,22 +38,12 @@
       "main": "dist/main"
     },
     "files": [
-      "dist/",
-      "node_modules/",
-      "dist/lib/libCal.dylib",
-      "dist/main/index.js",
-      "dist/renderer/index.html",
-      "dist/renderer/renderer.js",
-      "dist/main/preload.js",
+      "dist/**/*",
       "package.json"
     ],
     "directories": {
-      "buildResources": "lib",
       "output": "release"
     },
-    "extraResources": [
-      "./lib/**"
-    ],
     "copyright": "Copyright © 2021",
     "mac": {
       "category": "private.app-category.productivity",
